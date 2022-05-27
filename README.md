@@ -1,9 +1,40 @@
 # Data Science With EEG Signals
-This repository is part of the development of the graduation work of the Postgraduate in Data Science & Analytics by Centro Universitário SENAI CIMATEC.
+This repository is part of the conclusion work underdevelopment on the Data Science & Analytics post-graduate degree by Centro Universitário SENAI CIMATEC.
 The study consists of classifying EEG signals Motor Imaginary, intending to explore and compare the Transformers model-based architectures with other traditional Machine Learning algorithms.
 
+A brief overview of the file structure for the repository:
+
+```bash
+|   .gitignore   
+|   LICENSE
+|   Makefile   # Make file with some scripts for automation
+|   README.md
+|   requirements.txt
+|       
+\---src
+    |   cnn_train.ipynb   # File where we are training CNN models to get the metrics
+    |   exploratory_data_analysis.ipynb # Exploratory Data Analysis for the datasets
+    |   ml_pipeline_search.ipynb # Search the best feature extraction pipeline to train the benchmark ml model
+    |   ml_train.ipynb # File where we are training ML models to get the metrics
+    |   
+    +---artifacts
+    |       ml_models_results.csv # models serch results
+    |       
+    +---models
+    |       cnn_models.py # CNNs Architectures
+    |       transformers.py # Transformers Architectures
+    |       mlmodels.py # ML Gridsearch
+    |       __init__.py
+    |       
+    \---utils
+            dataloader.py # Functions responsible for load the datasets
+            feature_extraction.py # Feature extractions methods
+            mlpipelinebuilder.py # Class used to organize and train different comination de models and pipelines
+            plots.py # We can find here some utilities functions for plotting
+            __init__.py
 
 
+```
 
 # EEG-Analysis
 
@@ -167,7 +198,4 @@ python -m pip install -r requirements.txt
 
 
 ```
-
-https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/
-
-https://pypi.org/project/Braindecode/#history
+[Virtual environments reference](https://packaging.python.org/en/latest/guides/installing-using-pip-and-virtual-environments/)

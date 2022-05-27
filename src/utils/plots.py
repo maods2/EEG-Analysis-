@@ -4,6 +4,7 @@ import seaborn as sns
 import plotly.graph_objects as go
 import matplotlib.pyplot as plt
 from scipy.signal import welch
+from sklearn.metrics import ConfusionMatrixDisplay
 
 def plot_surface(eeg_signal, channel_ticks, channel_string, title):
     fig = go.Figure(data=[go.Surface(z=eeg_signal)])
@@ -40,3 +41,26 @@ def plot_fft_welch(signal, fs, title ):
     plt.grid(True, alpha=0.5)
     plt.plot(pxx_den)
     plt.show()
+
+
+def plot_acc_loss_keras(fitted_model, y_true, y_pred):
+    fig, axs = plt.subplots(1, 3, constrained_layout=True, figsize=(15,5))
+    fig.suptitle(f'Métrics ', fontsize=16)
+
+    axs[0].plot(fitted_model.history['accuracy'],  lw=2)
+    axs[0].plot(fitted_model.history['val_accuracy'],  lw=2)
+    axs[0].set_xlabel('epoch')
+    axs[0].set_ylabel('accuracy')
+    axs[0].set_title('model accuracy')
+    
+
+    axs[1].plot(fitted_model.history['loss'],  lw=2)
+    axs[1].plot(fitted_model.history['val_loss'],  lw=2)
+    axs[1].set_xlabel('epoch')
+    axs[1].set_ylabel('loss')
+    axs[1].set_title('model loss');   
+    
+    ConfusionMatrixDisplay.from_predictions(y_true, y_pred,ax=axs[2],values_format='d')
+    axs[2].set_title('Matriz de Confusão');
+    axs[2].grid(False)
+    
