@@ -160,7 +160,7 @@ It is still under development...
 Before you begin, ensure you have met the following requirements (Use the guide below to install virtual env with the required libraries.):
 <!--- These are just example requirements. Add, duplicate or remove as required --->
 * Python version: `Python==3.9.12`
-* [requirements.txt](https://github.ford.com/CLOPES47/sentiment-analysis/blob/master/requirements.txt)
+* [requirements.txt](https://github.com/maods2/EEG-Analysis-/blob/main/requirements.txt)
 
 > Instaling
 >  -
