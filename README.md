@@ -60,7 +60,7 @@ However, to dig into the studies of Brain-Computer Interface capabilities, it wa
 
     - Implement 1d and 2d CNNs
     - Train definitive models
-    - Present results
+    - Present results [Check out the results we have achieved so far.](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/cnn_models_results.csv)
     <br><br>
 
 6. Traine Transformer-based models.
