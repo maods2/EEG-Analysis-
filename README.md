@@ -14,8 +14,9 @@ A brief overview of the file structure for the repository:
 \---src
     |   cnn_train.ipynb   # File where we are training CNN models to get the metrics
     |   exploratory_data_analysis.ipynb # Exploratory Data Analysis for the datasets
-    |   ml_pipeline_search.ipynb # Search the best feature extraction pipeline to train the benchmark ml model
+    |   ml_pipeline_search.ipynb # Search the best feature extraction pipeline to train the benchmark 
     |   ml_train.ipynb # File where we are training ML models to get the metrics
+    |   results # Plot of the results for the different models
     |   
     +---artifacts
     |       ml_models_results.csv # models serch results
