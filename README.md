@@ -17,6 +17,7 @@ A brief overview of the file structure for the repository:
     |   ml_pipeline_search.ipynb # Search the best feature extraction pipeline to train the benchmark 
     |   ml_train.ipynb # File where we are training ML models to get the metrics
     |   results # Plot of the results for the different models
+    |   transformer_train.ipynb #  File where we are training transformer based models to get the metrics
     |   
     +---artifacts
     |       ml_models_results.csv # models serch results

@@ -10,6 +10,7 @@ def Transformer(
     mlp_units,
     dropout=0,
     mlp_dropout=0,
+    n_classes=2
 ):
     inputs = keras.Input(shape=input_shape)
     x = inputs

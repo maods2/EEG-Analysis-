@@ -130,5 +130,6 @@ def get_metrics(y_true, y_pred, cross_val_score, model_name, params, print_score
       "dataset": params['dataset'], 
       "subject": params['subject'], 
       "pipeline": params['pipeline'], 
+      "model_name":model_name 
       }
     
