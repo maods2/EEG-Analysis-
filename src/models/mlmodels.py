@@ -5,7 +5,7 @@ from xgboost import XGBClassifier
 from sklearn.neighbors import KNeighborsClassifier
 from sklearn.svm import SVC
 import multiprocessing
-N_JOBS = multiprocessing.cpu_count()-5
+N_JOBS = 2
 
 def KNNDWN_model_predict(X_train,X_test,y_train,y_test, scoring=None):
   KNN = KNeighborsClassifier(metric=dtw_fast)

@@ -1,0 +1,3 @@
+model,dataset,subject,acc_train,acc_val,acc_test
+Transformer Positional,Motor Imaginary,All,0.43283581733703613,0.4000000059604645,0.46
+Transformer,Motor Imaginary,All,0.21293532848358154,0.1599999964237213,0.28

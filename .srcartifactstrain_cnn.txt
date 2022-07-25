@@ -1,0 +1,124 @@
+classes count
+before oversampling = [201.  48.  53.  47.  51.]
+classes count
+before oversampling = [201.  48.  53.  47.  51.]
+after oversampling = [201 201 201 201 201]
+Epoch 1/5
+63/63 - 3s - loss: 1.4885 - accuracy: 0.3891 - val_loss: 1.6241 - val_accuracy: 0.1400 - 3s/epoch - 43ms/step
+Epoch 2/5
+63/63 - 0s - loss: 1.3044 - accuracy: 0.4905 - val_loss: 1.6379 - val_accuracy: 0.1600 - 220ms/epoch - 3ms/step
+Epoch 3/5
+63/63 - 0s - loss: 1.2436 - accuracy: 0.5483 - val_loss: 1.6819 - val_accuracy: 0.1400 - 230ms/epoch - 4ms/step
+Epoch 4/5
+63/63 - 0s - loss: 1.2118 - accuracy: 0.5811 - val_loss: 1.6719 - val_accuracy: 0.1800 - 215ms/epoch - 3ms/step
+Epoch 5/5
+63/63 - 0s - loss: 1.1798 - accuracy: 0.5910 - val_loss: 1.6682 - val_accuracy: 0.1800 - 220ms/epoch - 3ms/step
+
+1/2 [==============>...............] - ETA: 0s
+2/2 [==============================] - 0s 23ms/step
+Classification accuracy: 0.180000 
+Epoch 1/5
+63/63 - 1s - loss: 1.4880 - accuracy: 0.4219 - val_loss: 3.7594 - val_accuracy: 0.1400 - 641ms/epoch - 10ms/step
+Epoch 2/5
+63/63 - 0s - loss: 1.0863 - accuracy: 0.5841 - val_loss: 2.0147 - val_accuracy: 0.2600 - 180ms/epoch - 3ms/step
+Epoch 3/5
+63/63 - 0s - loss: 0.8875 - accuracy: 0.6746 - val_loss: 2.1001 - val_accuracy: 0.3000 - 171ms/epoch - 3ms/step
+Epoch 4/5
+63/63 - 0s - loss: 0.8020 - accuracy: 0.7095 - val_loss: 2.0764 - val_accuracy: 0.2800 - 170ms/epoch - 3ms/step
+Epoch 5/5
+63/63 - 0s - loss: 0.7637 - accuracy: 0.7423 - val_loss: 1.9946 - val_accuracy: 0.4200 - 172ms/epoch - 3ms/step
+
+1/2 [==============>...............] - ETA: 0s
+2/2 [==============================] - 0s 15ms/step
+Classification accuracy: 0.340000 
+Epoch 1/5
+63/63 - 3s - loss: 1.7400 - accuracy: 0.3632 - val_loss: 3.3804 - val_accuracy: 0.1800 - 3s/epoch - 41ms/step
+Epoch 2/5
+63/63 - 0s - loss: 1.2414 - accuracy: 0.5483 - val_loss: 3.1127 - val_accuracy: 0.1800 - 320ms/epoch - 5ms/step
+Epoch 3/5
+63/63 - 0s - loss: 1.0807 - accuracy: 0.6219 - val_loss: 2.7473 - val_accuracy: 0.2000 - 300ms/epoch - 5ms/step
+Epoch 4/5
+63/63 - 0s - loss: 1.0438 - accuracy: 0.6388 - val_loss: 2.1239 - val_accuracy: 0.2400 - 312ms/epoch - 5ms/step
+Epoch 5/5
+63/63 - 0s - loss: 0.8514 - accuracy: 0.6985 - val_loss: 2.1552 - val_accuracy: 0.3200 - 296ms/epoch - 5ms/step
+
+1/2 [==============>...............] - ETA: 0s
+2/2 [==============================] - ETA: 0s
+2/2 [==============================] - 1s 243ms/step
+Classification accuracy: 0.220000 
+Epoch 1/5
+
+  1/101 [..............................] - ETA: 1:14 - loss: 3.3823 - accuracy: 0.0000e+00
+ 11/101 [==>...........................] - ETA: 0s - loss: 2.8276 - accuracy: 0.1818      
+ 21/101 [=====>........................] - ETA: 0s - loss: 2.7303 - accuracy: 0.2048
+ 31/101 [========>.....................] - ETA: 0s - loss: 2.5972 - accuracy: 0.2161
+ 42/101 [===========>..................] - ETA: 0s - loss: 2.4844 - accuracy: 0.2214
+ 53/101 [==============>...............] - ETA: 0s - loss: 2.4471 - accuracy: 0.2075
+ 64/101 [==================>...........] - ETA: 0s - loss: 2.4192 - accuracy: 0.1953
+ 75/101 [=====================>........] - ETA: 0s - loss: 2.3379 - accuracy: 0.2000
+ 86/101 [========================>.....] - ETA: 0s - loss: 2.2707 - accuracy: 0.2035
+ 97/101 [===========================>..] - ETA: 0s - loss: 2.2220 - accuracy: 0.2010
+101/101 [==============================] - ETA: 0s - loss: 2.2043 - accuracy: 0.2000
+101/101 [==============================] - 2s 8ms/step - loss: 2.2043 - accuracy: 0.2000 - val_loss: 1.6241 - val_accuracy: 0.1200
+Epoch 2/5
+
+  1/101 [..............................] - ETA: 0s - loss: 1.7822 - accuracy: 0.3000
+ 11/101 [==>...........................] - ETA: 0s - loss: 1.7732 - accuracy: 0.3000
+ 20/101 [====>.........................] - ETA: 0s - loss: 1.8117 - accuracy: 0.2900
+ 31/101 [========>.....................] - ETA: 0s - loss: 1.7912 - accuracy: 0.2774
+ 41/101 [===========>..................] - ETA: 0s - loss: 1.8313 - accuracy: 0.2537
+ 52/101 [==============>...............] - ETA: 0s - loss: 1.7965 - accuracy: 0.2423
+ 62/101 [=================>............] - ETA: 0s - loss: 1.7789 - accuracy: 0.2403
+ 72/101 [====================>.........] - ETA: 0s - loss: 1.7569 - accuracy: 0.2403
+ 82/101 [=======================>......] - ETA: 0s - loss: 1.7340 - accuracy: 0.2463
+ 92/101 [==========================>...] - ETA: 0s - loss: 1.7207 - accuracy: 0.2511
+101/101 [==============================] - 1s 5ms/step - loss: 1.7222 - accuracy: 0.2507 - val_loss: 1.6362 - val_accuracy: 0.1200
+Epoch 3/5
+
+  1/101 [..............................] - ETA: 0s - loss: 2.1145 - accuracy: 0.0000e+00
+ 11/101 [==>...........................] - ETA: 0s - loss: 1.6815 - accuracy: 0.2455    
+ 21/101 [=====>........................] - ETA: 0s - loss: 1.6845 - accuracy: 0.2381
+ 31/101 [========>.....................] - ETA: 0s - loss: 1.6534 - accuracy: 0.2581
+ 41/101 [===========>..................] - ETA: 0s - loss: 1.6638 - accuracy: 0.2439
+ 52/101 [==============>...............] - ETA: 0s - loss: 1.6671 - accuracy: 0.2442
+ 63/101 [=================>............] - ETA: 0s - loss: 1.6745 - accuracy: 0.2413
+ 74/101 [====================>.........] - ETA: 0s - loss: 1.6640 - accuracy: 0.2446
+ 85/101 [========================>.....] - ETA: 0s - loss: 1.6721 - accuracy: 0.2424
+ 96/101 [===========================>..] - ETA: 0s - loss: 1.6629 - accuracy: 0.2469
+101/101 [==============================] - 1s 5ms/step - loss: 1.6647 - accuracy: 0.2478 - val_loss: 1.6638 - val_accuracy: 0.1200
+Epoch 4/5
+
+  1/101 [..............................] - ETA: 0s - loss: 1.6385 - accuracy: 0.3000
+ 12/101 [==>...........................] - ETA: 0s - loss: 1.5782 - accuracy: 0.3250
+ 23/101 [=====>........................] - ETA: 0s - loss: 1.6141 - accuracy: 0.2913
+ 33/101 [========>.....................] - ETA: 0s - loss: 1.6281 - accuracy: 0.2939
+ 43/101 [===========>..................] - ETA: 0s - loss: 1.6043 - accuracy: 0.3047
+ 53/101 [==============>...............] - ETA: 0s - loss: 1.6227 - accuracy: 0.2811
+ 63/101 [=================>............] - ETA: 0s - loss: 1.6200 - accuracy: 0.2794
+ 73/101 [====================>.........] - ETA: 0s - loss: 1.6062 - accuracy: 0.2932
+ 83/101 [=======================>......] - ETA: 0s - loss: 1.6049 - accuracy: 0.2928
+ 93/101 [==========================>...] - ETA: 0s - loss: 1.6131 - accuracy: 0.2817
+101/101 [==============================] - 1s 5ms/step - loss: 1.6051 - accuracy: 0.2876 - val_loss: 1.6751 - val_accuracy: 0.1200
+Epoch 5/5
+
+  1/101 [..............................] - ETA: 0s - loss: 1.6475 - accuracy: 0.1000
+ 10/101 [=>............................] - ETA: 0s - loss: 1.5512 - accuracy: 0.3100
+ 20/101 [====>.........................] - ETA: 0s - loss: 1.5744 - accuracy: 0.3050
+ 29/101 [=======>......................] - ETA: 0s - loss: 1.5693 - accuracy: 0.3069
+ 39/101 [==========>...................] - ETA: 0s - loss: 1.5852 - accuracy: 0.3077
+ 49/101 [=============>................] - ETA: 0s - loss: 1.5883 - accuracy: 0.2980
+ 59/101 [================>.............] - ETA: 0s - loss: 1.5920 - accuracy: 0.2983
+ 68/101 [===================>..........] - ETA: 0s - loss: 1.5773 - accuracy: 0.3103
+ 78/101 [======================>.......] - ETA: 0s - loss: 1.5809 - accuracy: 0.3038
+ 88/101 [=========================>....] - ETA: 0s - loss: 1.5636 - accuracy: 0.3170
+ 98/101 [============================>.] - ETA: 0s - loss: 1.5517 - accuracy: 0.3204
+101/101 [==============================] - 1s 6ms/step - loss: 1.5525 - accuracy: 0.3174 - val_loss: 1.5961 - val_accuracy: 0.3400
+
+1/2 [==============>...............] - ETA: 0s
+2/2 [==============================] - 0s 43ms/step
+Classification accuracy: 0.200000 
+            model          dataset subject  acc_train  acc_val  acc_test
+1  ShallowConvNet  Motor Imaginary     All   0.742289     0.42      0.34
+2     DeepConvNet  Motor Imaginary     All   0.698507     0.32      0.22
+3     HopefullNet  Motor Imaginary     All   0.317413     0.34      0.20
+0          EEGNet  Motor Imaginary     All   0.591045     0.18      0.18

@@ -1,0 +1,5 @@
+model,dataset,subject,acc_train,acc_val,acc_test
+HopefullNet,Motor Imaginary,All,0.2975124418735504,0.25999999046325684,0.28
+EEGNet,Motor Imaginary,All,0.5582089424133301,0.25999999046325684,0.22
+ShallowConvNet,Motor Imaginary,All,0.6965174078941345,0.3400000035762787,0.18
+DeepConvNet,Motor Imaginary,All,0.676616907119751,0.30000001192092896,0.16

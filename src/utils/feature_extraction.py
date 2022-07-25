@@ -113,40 +113,40 @@ def peaks(x):
     peak_value, peak_frequency = data_max, int(data_index) + 1
     return peak_value, peak_frequency
 
-def mean(x):
-  return np.mean(x, axis=-1)
+def mean(x, axis):
+  return np.mean(x, axis=axis)
 
-def var(x):
-  return np.var(x, axis=-1)
+def var(x, axis):
+  return np.var(x, axis=axis)
 
-def std(x):
-  return np.std(x, axis=-1)  
+def std(x, axis):
+  return np.std(x, axis=axis)  
 
-# def skewness(x):
-#   return np.array(stats.skewness(x))
+# def skewness(x, axis):
+#   return np.array(stats.skewness(x, axis))
 
-# def kurtosis(x):
-#   return np.array(stats.kurtosis(x))
+# def kurtosis(x, axis):
+#   return np.array(stats.kurtosis(x, axis))
 
-def ptp(x):
-  return np.ptp(x, axis=-1)
+def ptp(x, axis):
+  return np.ptp(x, axis=axis)
 
-def argmin(x):
-  return np.argmin(x, axis=-1)
+def argmin(x, axis):
+  return np.argmin(x, axis=axis)
 
-def argmax(x):
-  return np.argmax(x, axis=-1)
+def argmax(x, axis):
+  return np.argmax(x, axis=axis)
 
-def abs_diff_signal(x):
-  return np.nansum(np.abs(np.diff(x, axis=-1)), axis=-1)
+def abs_diff_signal(x, axis):
+  return np.nansum(np.abs(np.diff(x, axis=axis)), axis=axis)
 
-def rms(x):
-  return np.sqrt(np.nanmean(x**2, axis=-1))
+def rms(x, axis):
+  return np.sqrt(np.nanmean(x**2, axis=axis))
 
-def time_spectral_entropy(x, fs):  # Applied for time domain because has an inner fft calculation 
-  return ant.spectral_entropy(x, sf=fs, method='welch', normalize=True)
+def time_spectral_entropy(x, fs,axis):  # Applied for time domain because has an inner fft calculation 
+  return ant.spectral_entropy(x, sf=fs, method='welch', normalize=True, axis=axis)
 
-def frequency_spectral_entropy(psd, normalize=True, axis=-1):
+def frequency_spectral_entropy(psd, axis, normalize=True):
   psd_norm = psd / psd.sum(axis=axis, keepdims=True)
   se = -(psd_norm * np.log2(psd_norm)).sum(axis=axis)
   if normalize:
@@ -154,16 +154,16 @@ def frequency_spectral_entropy(psd, normalize=True, axis=-1):
   return se
 
 
-def time_domain_features(x, fs):
-  ax=-1
-  mean_result = mean(x)
-  var_result = var(x)
+def time_domain_features(x, fs, ax):
+  
+  mean_result = mean(x, ax)
+  var_result = var(x, ax)
   skewness_result = scipy.stats.skew(x, axis=ax)
   kurtosis_result = scipy.stats.kurtosis(x, axis=ax)
-  ptp_result = ptp(x)
-  abs_diff_signal_result = abs_diff_signal(x)
-  rms_result = rms(x)
-  time_spectral_entropy_result = time_spectral_entropy(x, fs)
+  ptp_result = ptp(x, ax)
+  abs_diff_signal_result = abs_diff_signal(x, ax)
+  rms_result = rms(x, ax)
+  time_spectral_entropy_result = time_spectral_entropy(x, fs,axis=ax)
   return np.round(np.hstack([
               mean_result,
               var_result,
@@ -175,22 +175,22 @@ def time_domain_features(x, fs):
               time_spectral_entropy_result
               ]),4)
 
-def frequency_domain_features(x, fs):
-  ax=-1
+def frequency_domain_features(x, fs, ax):
+  
   # centroid, spread = spectral_centroid_and_spread(x, fs)
   # spectral_rolloff_result = spectral_rolloff(x, centroid)
   peak_value, peak_frequency = peaks(x)
   # argmin_result = argmin(x)
   # argmax_result = argmax(x)
-  frequency_spectral_entropy_result = frequency_spectral_entropy(x)
-  mean_result = mean(x)
-  var_result = var(x)
-  std_result = std(x)
+  frequency_spectral_entropy_result = frequency_spectral_entropy(x, ax)
+  mean_result = mean(x, ax)
+  var_result = var(x, ax)
+  std_result = std(x, ax)
   skewness_result = scipy.stats.skew(x, axis=ax)
-  kurtosis_result = scipy.stats.kurtosis(x)
+  kurtosis_result = scipy.stats.kurtosis(x, ax)
   # ptp_result = ptp(x)
   # abs_diff_signal_result = abs_diff_signal(x)
-  rms_result = rms(x)
+  rms_result = rms(x, ax)
 
  
   return  np.round(np.hstack([
