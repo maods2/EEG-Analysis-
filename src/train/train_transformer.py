@@ -5,8 +5,6 @@ sys.path.append(os.path.dirname(SCRIPT_DIR))
 
 from models.transformers import Transformer, TransformerPositionEncoding
 from utils.plots import plot_acc_loss_keras
-from utils.dataloader import load_eeg_data_edf, load_eeg_data_gdf, load_eeg_data_mat
-from utils.dataloader import load_eeg_data_mat
 from sklearn.preprocessing import minmax_scale
 from imblearn.over_sampling import SMOTE
 from utils.data_preprocessing_utils import Utils

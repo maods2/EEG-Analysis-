@@ -1,5 +1,0 @@
-model,dataset,subject,acc_train,acc_val,acc_test
-ShallowConvNet,Motor Imaginary,All,0.7422885298728943,0.41999998688697815,0.34
-DeepConvNet,Motor Imaginary,All,0.6985074877738953,0.3199999928474426,0.22
-HopefullNet,Motor Imaginary,All,0.31741294264793396,0.3400000035762787,0.2
-EEGNet,Motor Imaginary,All,0.5910447835922241,0.18000000715255737,0.18
