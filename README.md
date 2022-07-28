@@ -98,6 +98,12 @@ The following data sets were selected:
         4 classes, 80 subjects
         160Hz sampling rate
 
+    
+                B indicates baseline
+                L indicates motor imagination of opening and closing left fist;
+                R indicates motor imagination of opening and closing right fist;
+                LR indicates motor imagination of opening and closing both fists;
+                F indicates motor imagination of opening and closing both feet.
 
 
 **Dataset documentation:**
