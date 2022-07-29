@@ -53,6 +53,15 @@ def plot_fft_welch(signal, fs, title):
 
 
 def plot_acc_loss_keras(fitted_model, y_true, y_pred, model_name):
+    
+    accucaracy = metrics.accuracy_score(y_true, y_pred)
+    precision, recall, fscore, support = metrics.precision_recall_fscore_support(
+        y_true, y_pred, average='weighted')
+    kappa = cohen_kappa_score(y_true, y_pred)
+    mathew_coef = matthews_corrcoef(y_true, y_pred)
+    fpr, tpr, thresholds = metrics.roc_curve(y_true, y_pred, pos_label=1)
+    auc = metrics.auc(fpr, tpr)
+    
     fig, axs = plt.subplots(1, 3, constrained_layout=True, figsize=(15, 5))
     fig.suptitle(f'Métrics {model_name}', fontsize=16)
 
@@ -74,6 +83,17 @@ def plot_acc_loss_keras(fitted_model, y_true, y_pred, model_name):
     axs[2].grid(False)
     plt.savefig(f'src/artifacts/cm_{model_name.replace(" ","_").replace("->","")}.png', bbox_inches='tight')
     plt.close(fig)
+
+    return {
+    "acc_test": accucaracy,
+    "Precision": precision,
+    "Recall": recall,
+    "F1_score": fscore,
+    "auc": auc, "kappa": kappa,
+    "mathew_coef": mathew_coef,
+    "model_name": model_name
+    }
+
 
 def get_metrics(y_true, y_pred, cross_val_score, model_name, params, print_scores=False):
     # print("\n")

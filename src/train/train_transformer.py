@@ -108,16 +108,16 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     acc         = np.mean(preds == y_test.argmax(axis=-1))
     print("Classification accuracy: %f " % (acc))
 
-    plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, "Transformer")
+    model_name = "Transformer"
 
-    metrics_results.append({
-        "model": "Transformer",
-        "dataset": dataset,
-        "subject": subject,
-        "acc_train": fittedModel.history['accuracy'][-1],
-        "acc_val": fittedModel.history['val_accuracy'][-1],
-        "acc_test": acc,
-    })
+    metrics = plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, model_name)
+    
+    metrics["model"] = model_name
+    metrics["dataset"] = dataset
+    metrics["subject"] = subject
+    metrics["acc_train"] = fittedModel.history['accuracy'][-1]
+    metrics["acc_val"] = fittedModel.history['val_accuracy'][-1]
+    metrics_results.append(metrics)
 
 
 
@@ -152,16 +152,16 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     acc         = np.mean(preds == y_test.argmax(axis=-1))
     print("Classification accuracy: %f " % (acc))
 
-    plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, "Transformer Positional")
+    model_name = "Transformer Positional"
 
-    metrics_results.append({
-        "model": "Transformer Positional",
-        "dataset": dataset,
-        "subject": subject,
-        "acc_train": fittedModel.history['accuracy'][-1],
-        "acc_val": fittedModel.history['val_accuracy'][-1],
-        "acc_test": acc,
-    })
+    metrics = plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, model_name)
+    
+    metrics["model"] = model_name
+    metrics["dataset"] = dataset
+    metrics["subject"] = subject
+    metrics["acc_train"] = fittedModel.history['accuracy'][-1]
+    metrics["acc_val"] = fittedModel.history['val_accuracy'][-1]
+    metrics_results.append(metrics)
 
 
 

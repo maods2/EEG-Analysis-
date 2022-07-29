@@ -104,16 +104,16 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     acc         = np.mean(preds == y_test.argmax(axis=-1))
     print("Classification accuracy: %f " % (acc))
 
-    plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, "EEGNet")
+    model_name = "EEGNet"
 
-    metrics_results.append({
-        "model": "EEGNet",
-        "dataset": dataset,
-        "subject": subject,
-        "acc_train": fittedModel.history['accuracy'][-1],
-        "acc_val": fittedModel.history['val_accuracy'][-1],
-        "acc_test": acc,
-    })
+    metrics = plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, model_name)
+    
+    metrics["model"] = model_name
+    metrics["dataset"] = dataset
+    metrics["subject"] = subject
+    metrics["acc_train"] = fittedModel.history['accuracy'][-1]
+    metrics["acc_val"] = fittedModel.history['val_accuracy'][-1]
+    metrics_results.append(metrics)
 
     #-------------------------   ShallowConvNet ---------------------------------------------------
     model = ShallowConvNet(nb_classes = nb_classes, Chans = chans, Samples = samples)
@@ -131,17 +131,17 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     preds       = probs.argmax(axis = -1)  
     acc         = np.mean(preds == y_test.argmax(axis=-1))
     print("Classification accuracy: %f " % (acc))
+    
+    model_name = "ShallowConvNet"
 
-    plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, "ShallowConvNet")
-
-    metrics_results.append({
-        "model": "ShallowConvNet",
-        "dataset": dataset,
-        "subject": subject,
-        "acc_train": fittedModel.history['accuracy'][-1],
-        "acc_val": fittedModel.history['val_accuracy'][-1],
-        "acc_test": acc,
-    })
+    metrics = plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, model_name)
+    
+    metrics["model"] = model_name
+    metrics["dataset"] = dataset
+    metrics["subject"] = subject
+    metrics["acc_train"] = fittedModel.history['accuracy'][-1]
+    metrics["acc_val"] = fittedModel.history['val_accuracy'][-1]
+    metrics_results.append(metrics)
 
     #-------------------------   DeepConvNet ---------------------------------------------------
 
@@ -160,16 +160,17 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     acc         = np.mean(preds == y_test.argmax(axis=-1))
     print("Classification accuracy: %f " % (acc))
 
-    plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, "DeepConvNet")
+    model_name = "DeepConvNet"
 
-    metrics_results.append({
-        "model": "DeepConvNet",
-        "dataset": dataset,
-        "subject": subject,
-        "acc_train": fittedModel.history['accuracy'][-1],
-        "acc_val": fittedModel.history['val_accuracy'][-1],
-        "acc_test": acc,
-    })
+    metrics = plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, model_name)
+    
+    metrics["model"] = model_name
+    metrics["dataset"] = dataset
+    metrics["subject"] = subject
+    metrics["acc_train"] = fittedModel.history['accuracy'][-1]
+    metrics["acc_val"] = fittedModel.history['val_accuracy'][-1]
+    metrics_results.append(metrics)
+    
     #-------------------------   HopefullNet ---------------------------------------------------
     x_train = x_train.reshape(x_train.shape[0], x_train.shape[-1],x_train.shape[-2]).astype(np.float32)
     x_valid = x_valid.reshape(x_valid.shape[0], x_valid.shape[-1],x_valid.shape[-2]).astype(np.float32)
@@ -199,16 +200,16 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     acc         = np.mean(preds == y_test.argmax(axis=-1))
     print("Classification accuracy: %f " % (acc))
 
-    plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, "HopefullNet")
+    model_name = "HopefullNet"
 
-    metrics_results.append({
-        "model": "HopefullNet",
-        "dataset": dataset,
-        "subject": subject,
-        "acc_train": fittedModel.history['accuracy'][-1],
-        "acc_val": fittedModel.history['val_accuracy'][-1],
-        "acc_test": acc,
-    })
+    metrics = plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, model_name)
+    
+    metrics["model"] = model_name
+    metrics["dataset"] = dataset
+    metrics["subject"] = subject
+    metrics["acc_train"] = fittedModel.history['accuracy'][-1]
+    metrics["acc_val"] = fittedModel.history['val_accuracy'][-1]
+    metrics_results.append(metrics)
 
 
 metrics_results = []
