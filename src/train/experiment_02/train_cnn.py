@@ -22,12 +22,12 @@ import tensorflow as tf
 def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, kernels=1, epochs=50):
     
     # take 50/25/25 percent of the data to train/validate/test
-    SOURCE_PATH = "C:/Users/Maods/Documents/Repos/EEG-Analysis-/data/processed"
+    SOURCE_PATH = "C:/Users/Maods/Documents/Code-Samples/Python/MI-EEG-Dataset/dataset/processed"
 
     # Load data
     # ["FC1", "FC2"], ["FC3", "FC4"], ["FC5", "FC6"]]
-    channels = Utils.combinations["h"]
-   
+#     channels = Utils.combinations["e"]
+    channels = [["C1", "C2"]]
 
     exclude = [38, 88, 89, 92, 100, 104]
     subjects = [n for n in np.arange(1, 110) if n not in exclude]
@@ -195,7 +195,7 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     
 
     fittedModel = model.fit(x_train, y_train, epochs=epochs, batch_size=10,
-                validation_data=(x_valid, y_valid)) 
+                validation_data=(x_valid, y_valid), callbacks=callbacksList) 
 
     probs       = model.predict(x_test)
     preds       = probs.argmax(axis = -1)  

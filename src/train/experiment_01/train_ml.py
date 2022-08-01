@@ -18,6 +18,7 @@ from pathlib import Path
 from imblearn.over_sampling import SMOTE
 from models.mlmodels import KNN_model_predict, LDA_model_predict, SVM_model_predict, XGB_model_predict, KNNDWN_model_predict
 from utils.plots import get_metrics
+from utils.dataloader import load_eeg_data_edf, load_eeg_data_gdf, load_eeg_data_mat
 from utils.data_preprocessing_utils import Utils
 from utils.feature_extraction import time_domain_features, standard_scaler_transform, wavelet_transform, bandpass_transform, psd_transform
 
@@ -53,18 +54,18 @@ def run_ml_models(dataset, params, metrics_results):
         y_true, y_pred, best_score, 'XGB', params))
 
 
-    SOURCE_PATH = "C:/Users/Maods/Documents/Repos/EEG-Analysis-/data/processed"
+SOURCE_PATH = "C:/Users/Maods/Documents/Code-Samples/Python/MI-EEG-Dataset/dataset/processed"
 
 # Load data
 # ["FC1", "FC2"], ["FC3", "FC4"], ["FC5", "FC6"]]
-channels = Utils.combinations["h"]
+channels = Utils.combinations["e"]
 
 exclude = [38, 88, 89, 92, 100, 104]
 subjects = [n for n in np.arange(1, 110) if n not in exclude]
 
 x, y = Utils.load(channels, subjects, base_path=SOURCE_PATH)
 y = Utils.to_categorical(y)
-# x, y = x[:100] , y[:100] 
+
 
 # Reshape for scaling
 x_reshaped = x.reshape(x.shape[0], x.shape[1] * x.shape[2])
@@ -152,8 +153,6 @@ run_ml_models(dataset, params, metrics_results)
 result = pd.DataFrame(metrics_results)
 result = result.sort_values(['cross_val_score','F1_score'], ascending=False)
 result.to_csv('src/artifacts/results_ml_models.csv', index=False, header=True)
-
-    
 
 
 

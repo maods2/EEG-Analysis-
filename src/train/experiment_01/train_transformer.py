@@ -19,15 +19,14 @@ import tensorflow as tf
 
 
 
-def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, kernels=1, epochs=50, models_name=[]):
+def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, kernels=1, epochs=50):
     
     # take 50/25/25 percent of the data to train/validate/test
-    SOURCE_PATH = "C:/Users/Maods/Documents/Repos/EEG-Analysis-/data/processed"
+    SOURCE_PATH = "C:/Users/Maods/Documents/Code-Samples/Python/MI-EEG-Dataset/dataset/processed"
 
     # Load data
     # ["FC1", "FC2"], ["FC3", "FC4"], ["FC5", "FC6"]]
-    # channels = Utils.combinations["e"]
-    channels = Utils.combinations["h"]
+    channels = Utils.combinations["e"]
 
     exclude = [38, 88, 89, 92, 100, 104]
     subjects = [n for n in np.arange(1, 110) if n not in exclude]
@@ -80,11 +79,11 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     loss = tf.keras.losses.categorical_crossentropy
     optimizer = tf.keras.optimizers.Adam(lr=learning_rate)
     model = Transformer(input_shape,
-        head_size=160,
-        num_heads=4,
+        head_size=640,
+        num_heads=1,
         ff_dim=4,
         num_transformer_blocks=4,
-        mlp_units=[64],
+        mlp_units=[296, 148, 74],
         mlp_dropout=0.4,
         dropout=0.25,
         n_classes=n_classes
@@ -102,14 +101,14 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     callbacksList = [earlystopping] # build callbacks list
     #%%
     fittedModel = model.fit(x_train, y_train, epochs=epochs, batch_size=10,
-                validation_data=(x_valid, y_valid)) 
+                validation_data=(x_valid, y_valid), callbacks=callbacksList) 
 
     probs       = model.predict(x_test)
     preds       = probs.argmax(axis = -1)  
     acc         = np.mean(preds == y_test.argmax(axis=-1))
     print("Classification accuracy: %f " % (acc))
 
-    model_name = models_name[0]
+    model_name = "Transformer"
 
     metrics = plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, model_name)
     
@@ -124,7 +123,7 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
 
     model = TransformerPositionEncoding(
         input_shape=input_shape,
-        head_size=160,
+        head_size=256,
         num_heads=4,
         ff_dim=4,
         num_transformer_blocks=2,
@@ -146,14 +145,14 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     callbacksList = [earlystopping] # build callbacks list
     #%%
     fittedModel = model.fit(x_train, y_train, epochs=epochs, batch_size=10,
-                validation_data=(x_valid, y_valid)) 
+                validation_data=(x_valid, y_valid), callbacks=callbacksList) 
 
     probs       = model.predict(x_test)
     preds       = probs.argmax(axis = -1)  
     acc         = np.mean(preds == y_test.argmax(axis=-1))
     print("Classification accuracy: %f " % (acc))
 
-    model_name = models_name[1]
+    model_name = "Transformer Positional"
 
     metrics = plot_acc_loss_keras(fittedModel, y_test.argmax(axis=-1), preds, model_name)
     
@@ -177,21 +176,8 @@ if __name__ == '__main__':
         subject="All",
         metrics_results=metrics_results, 
         kernels=1, 
-        epochs=100,
-        models_name=["Transformer", "Transformer Pos Enc"]
+        epochs=50
         )
-
-    # run_pipeline(
-    #     nb_classes=5, 
-    #     chans=2, 
-    #     samples=640, 
-    #     dataset="Motor Imaginary", 
-    #     subject="All",
-    #     metrics_results=metrics_results, 
-    #     kernels=1, 
-    #     epochs=5,
-    #     models_name=["Transformer", "Transformer Pos Enc"]
-    #     )
 
     result = pd.DataFrame(metrics_results)
     result = result.sort_values(['acc_test','acc_val'], ascending=False)

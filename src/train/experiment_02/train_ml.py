@@ -53,11 +53,12 @@ def run_ml_models(dataset, params, metrics_results):
         y_true, y_pred, best_score, 'XGB', params))
 
 
-    SOURCE_PATH = "C:/Users/Maods/Documents/Repos/EEG-Analysis-/data/processed"
+SOURCE_PATH = "C:/Users/Maods/Documents/Code-Samples/Python/MI-EEG-Dataset/dataset/processed"
 
 # Load data
 # ["FC1", "FC2"], ["FC3", "FC4"], ["FC5", "FC6"]]
-channels = Utils.combinations["h"]
+# channels = Utils.combinations["e"]
+channels = [["C1", "C2"]]
 
 exclude = [38, 88, 89, 92, 100, 104]
 subjects = [n for n in np.arange(1, 110) if n not in exclude]

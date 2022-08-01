@@ -62,25 +62,33 @@ def plot_acc_loss_keras(fitted_model, y_true, y_pred, model_name):
     fpr, tpr, thresholds = metrics.roc_curve(y_true, y_pred, pos_label=1)
     auc = metrics.auc(fpr, tpr)
     
-    fig, axs = plt.subplots(1, 3, constrained_layout=True, figsize=(15, 5))
-    fig.suptitle(f'Métrics {model_name}', fontsize=16)
+    fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
+    fig.suptitle(f'Training Accuracy - {model_name}', fontsize=16)
 
-    axs[0].plot(fitted_model.history['accuracy'],  lw=2)
-    axs[0].plot(fitted_model.history['val_accuracy'],  lw=2)
-    axs[0].set_xlabel('epoch')
-    axs[0].set_ylabel('accuracy')
-    axs[0].set_title('model accuracy')
+    axs.plot(fitted_model.history['accuracy'],  lw=2)
+    axs.plot(fitted_model.history['val_accuracy'],  lw=2)
+    axs.set_xlabel('epoch')
+    axs.set_ylabel('accuracy')
+    # axs.set_title('model accuracy')
+    plt.savefig(f'src/artifacts/acc_{model_name.replace(" ","_").replace("->","")}.png', bbox_inches='tight')
+    plt.close(fig)
 
-    axs[1].plot(fitted_model.history['loss'],  lw=2)
-    axs[1].plot(fitted_model.history['val_loss'],  lw=2)
-    axs[1].set_xlabel('epoch')
-    axs[1].set_ylabel('loss')
-    axs[1].set_title('model loss')
+    fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
+    fig.suptitle(f'Training Loss - {model_name}', fontsize=16)
+    axs.plot(fitted_model.history['loss'],  lw=2)
+    axs.plot(fitted_model.history['val_loss'],  lw=2)
+    axs.set_xlabel('epoch')
+    axs.set_ylabel('loss')
+    # axs.set_title('model loss')
+    plt.savefig(f'src/artifacts/loss_{model_name.replace(" ","_").replace("->","")}.png', bbox_inches='tight')
+    plt.close(fig)
 
+    fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
+    fig.suptitle(f'Matriz de Confusão - {model_name}', fontsize=16)
     ConfusionMatrixDisplay.from_predictions(
-        y_true, y_pred, ax=axs[2], values_format='d')
-    axs[2].set_title('Matriz de Confusão')
-    axs[2].grid(False)
+        y_true, y_pred, ax=axs, values_format='d')
+    # axs.set_title('Matriz de Confusão')
+    axs.grid(False)
     plt.savefig(f'src/artifacts/cm_{model_name.replace(" ","_").replace("->","")}.png', bbox_inches='tight')
     plt.close(fig)
 
@@ -125,23 +133,30 @@ def get_metrics(y_true, y_pred, cross_val_score, model_name, params, print_score
         print(f'Cohen_kappa: {kappa} \n')
         print(f'Matthews Coef: {mathew_coef} \n')
 
-    fig, axs = plt.subplots(1, 2, constrained_layout=True, figsize=(15, 7))
+    fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
     fig.suptitle(
         f'Métricas: {params["pipeline"]+ " + "+model_name  }', fontsize=16)
 
-    axs[0].plot(fpr, tpr, color='darkorange', lw=2,
+    axs.plot(fpr, tpr, color='darkorange', lw=2,
                 label='ROC curve (area = %0.2f)' % auc)
-    axs[0].plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
-    axs[0].set_ylim([0.0, 1.05])
-    axs[0].set_xlabel('False Positive Rate')
-    axs[0].set_ylabel('True Positive Rate')
-    axs[0].set_title('Curva ROC')
-    axs[0].legend(loc="lower right")
+    axs.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
+    axs.set_ylim([0.0, 1.05])
+    axs.set_xlabel('False Positive Rate')
+    axs.set_ylabel('True Positive Rate')
+    axs.set_title('Curva ROC')
+    axs.legend(loc="lower right")
+
+    plt.savefig(f'src/artifacts/roc_{params["pipeline"].replace(" ","_").replace("->","") + "_"+model_name}.png', bbox_inches='tight')
+    plt.close(fig)
+
+    fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
+    fig.suptitle(
+        f'Métricas: {params["pipeline"]+ " + "+model_name  }', fontsize=16)
 
     ConfusionMatrixDisplay.from_predictions(
-        y_true, y_pred, ax=axs[1], values_format='d')
-    axs[1].set_title('Matriz de Confusão')
-    axs[1].grid(False)
+        y_true, y_pred, ax=axs, values_format='d')
+    axs.set_title('Matriz de Confusão')
+    axs.grid(False)
 
     plt.savefig(f'src/artifacts/cm_{params["pipeline"].replace(" ","_").replace("->","") + "_"+model_name}.png', bbox_inches='tight')
     plt.close(fig)

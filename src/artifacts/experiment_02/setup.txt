@@ -1,0 +1,2 @@
+Dataset channels: ["C1", "C2"]
+epochs:100

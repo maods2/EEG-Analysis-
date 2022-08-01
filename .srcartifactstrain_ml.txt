@@ -1,4 +1,4 @@
 classes count
-before oversampling = 110811
+before oversampling = 18467
 classes count
-after oversampling = 444960
+after oversampling = 74160

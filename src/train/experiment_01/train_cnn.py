@@ -22,19 +22,17 @@ import tensorflow as tf
 def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, kernels=1, epochs=50):
     
     # take 50/25/25 percent of the data to train/validate/test
-    SOURCE_PATH = "C:/Users/Maods/Documents/Repos/EEG-Analysis-/data/processed"
+    SOURCE_PATH = "C:/Users/Maods/Documents/Code-Samples/Python/MI-EEG-Dataset/dataset/processed"
 
     # Load data
     # ["FC1", "FC2"], ["FC3", "FC4"], ["FC5", "FC6"]]
-    channels = Utils.combinations["h"]
-   
+    channels = Utils.combinations["e"]
 
     exclude = [38, 88, 89, 92, 100, 104]
     subjects = [n for n in np.arange(1, 110) if n not in exclude]
 
     x, y = Utils.load(channels, subjects, base_path=SOURCE_PATH)
-    print(x.shape)
-#     x, y = x[:500] , y[:500] 
+    # x, y = x[:500] , y[:500] 
     #Transform y to one-hot-encoding
     y_one_hot  = Utils.to_one_hot(y, by_sub=False)
     #Reshape for scaling
@@ -195,7 +193,7 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     
 
     fittedModel = model.fit(x_train, y_train, epochs=epochs, batch_size=10,
-                validation_data=(x_valid, y_valid)) 
+                validation_data=(x_valid, y_valid), callbacks=callbacksList) 
 
     probs       = model.predict(x_test)
     preds       = probs.argmax(axis = -1)  
@@ -224,7 +222,7 @@ run_pipeline(
     subject="All",
     metrics_results=metrics_results, 
     kernels=1, 
-    epochs=100
+    epochs=50
     )
 
 
