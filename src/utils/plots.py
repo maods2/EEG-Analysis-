@@ -52,8 +52,8 @@ def plot_fft_welch(signal, fs, title):
     plt.show()
 
 
-def plot_acc_loss_keras(fitted_model, y_true, y_pred, model_name):
-    
+def plot_acc_loss_keras(fitted_model, y_true, y_pred, model_name, subject):
+
     accucaracy = metrics.accuracy_score(y_true, y_pred)
     precision, recall, fscore, support = metrics.precision_recall_fscore_support(
         y_true, y_pred, average='weighted')
@@ -61,45 +61,49 @@ def plot_acc_loss_keras(fitted_model, y_true, y_pred, model_name):
     mathew_coef = matthews_corrcoef(y_true, y_pred)
     fpr, tpr, thresholds = metrics.roc_curve(y_true, y_pred, pos_label=1)
     auc = metrics.auc(fpr, tpr)
-    
+
     fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
-    fig.suptitle(f'Training Accuracy - {model_name}', fontsize=16)
+    train_sub_title = model_name if subject == "All" else model_name + " | " + subject
+    fig.suptitle(f'Training Accuracy - {train_sub_title}', fontsize=16)
 
     axs.plot(fitted_model.history['accuracy'],  lw=2)
     axs.plot(fitted_model.history['val_accuracy'],  lw=2)
     axs.set_xlabel('epoch')
     axs.set_ylabel('accuracy')
     # axs.set_title('model accuracy')
-    plt.savefig(f'src/artifacts/acc_{model_name.replace(" ","_").replace("->","")}.png', bbox_inches='tight')
+    file_sub_title = f'src/artifacts/acc_{model_name.replace(" ","_").replace("->","")}.png' if subject == "All" else f'src/artifacts/acc_{model_name.replace(" ","_").replace("->","")}_{subject}.png'
+    plt.savefig(file_sub_title, bbox_inches='tight')
     plt.close(fig)
 
     fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
-    fig.suptitle(f'Training Loss - {model_name}', fontsize=16)
+    fig.suptitle(f'Training Loss - {train_sub_title}', fontsize=16)
     axs.plot(fitted_model.history['loss'],  lw=2)
     axs.plot(fitted_model.history['val_loss'],  lw=2)
     axs.set_xlabel('epoch')
     axs.set_ylabel('loss')
     # axs.set_title('model loss')
-    plt.savefig(f'src/artifacts/loss_{model_name.replace(" ","_").replace("->","")}.png', bbox_inches='tight')
+    file_sub_title = f'src/artifacts/loss_{model_name.replace(" ","_").replace("->","")}.png' if subject == "All" else f'src/artifacts/loss_{model_name.replace(" ","_").replace("->","")}_{subject}.png'
+    plt.savefig(file_sub_title, bbox_inches='tight')
     plt.close(fig)
 
     fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
-    fig.suptitle(f'Matriz de Confusão - {model_name}', fontsize=16)
+    fig.suptitle(f'Matriz de Confusão - {train_sub_title}', fontsize=16)
     ConfusionMatrixDisplay.from_predictions(
         y_true, y_pred, ax=axs, values_format='d')
     # axs.set_title('Matriz de Confusão')
     axs.grid(False)
-    plt.savefig(f'src/artifacts/cm_{model_name.replace(" ","_").replace("->","")}.png', bbox_inches='tight')
+    file_sub_title = f'src/artifacts/cm_{model_name.replace(" ","_").replace("->","")}.png' if subject == "All" else f'src/artifacts/cm_{model_name.replace(" ","_").replace("->","")}_{subject}.png'
+    plt.savefig(file_sub_title, bbox_inches='tight')
     plt.close(fig)
 
     return {
-    "acc_test": accucaracy,
-    "Precision": precision,
-    "Recall": recall,
-    "F1_score": fscore,
-    "auc": auc, "kappa": kappa,
-    "mathew_coef": mathew_coef,
-    "model_name": model_name
+        "acc_test": accucaracy,
+        "Precision": precision,
+        "Recall": recall,
+        "F1_score": fscore,
+        "auc": auc, "kappa": kappa,
+        "mathew_coef": mathew_coef,
+        "model_name": model_name
     }
 
 
@@ -134,33 +138,41 @@ def get_metrics(y_true, y_pred, cross_val_score, model_name, params, print_score
         print(f'Matthews Coef: {mathew_coef} \n')
 
     fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
+
+    train_sub_title = params["pipeline"] + " + " + \
+        model_name if params['subject'] == "All" else params["pipeline"] + \
+        " + "+model_name+" | " + params['subject']
     fig.suptitle(
-        f'Métricas: {params["pipeline"]+ " + "+model_name  }', fontsize=16)
+        f'Métricas: {train_sub_title }', fontsize=16)
 
     axs.plot(fpr, tpr, color='darkorange', lw=2,
-                label='ROC curve (area = %0.2f)' % auc)
+             label='ROC curve (area = %0.2f)' % auc)
     axs.plot([0, 1], [0, 1], color='navy', lw=2, linestyle='--')
     axs.set_ylim([0.0, 1.05])
     axs.set_xlabel('False Positive Rate')
     axs.set_ylabel('True Positive Rate')
     axs.set_title('Curva ROC')
     axs.legend(loc="lower right")
+    file_sub_title = f'src/artifacts/roc_{params["pipeline"].replace(" ","_").replace("->","") + "_"+model_name}.png' if params[
+        'subject'] == "All" else f'src/artifacts/roc_{params["pipeline"].replace(" ","_").replace("->","") + "_"+model_name}_{params["subject"]}.png'
 
-    plt.savefig(f'src/artifacts/roc_{params["pipeline"].replace(" ","_").replace("->","") + "_"+model_name}.png', bbox_inches='tight')
+    plt.savefig(file_sub_title, bbox_inches='tight')
     plt.close(fig)
 
     fig, axs = plt.subplots(1, 1, constrained_layout=True, figsize=(9, 5))
     fig.suptitle(
-        f'Métricas: {params["pipeline"]+ " + "+model_name  }', fontsize=16)
+        f'Métricas: {train_sub_title }', fontsize=16)
 
     ConfusionMatrixDisplay.from_predictions(
         y_true, y_pred, ax=axs, values_format='d')
     axs.set_title('Matriz de Confusão')
     axs.grid(False)
 
-    plt.savefig(f'src/artifacts/cm_{params["pipeline"].replace(" ","_").replace("->","") + "_"+model_name}.png', bbox_inches='tight')
+    file_sub_title = f'src/artifacts/cm_{params["pipeline"].replace(" ","_").replace("->","") + "_"+model_name}.png' if params[
+        'subject'] == "All" else f'src/artifacts/cm_{params["pipeline"].replace(" ","_").replace("->","") + "_"+model_name}_{params["subject"]}.png'
+    plt.savefig(file_sub_title, bbox_inches='tight')
     plt.close(fig)
-    
+
     return {
         "cross_val_score": cross_val_score,
         "Accuracy": accucaracy,

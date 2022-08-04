@@ -401,7 +401,7 @@ class Utils:
         data_y = list()
 
         for couple in channels:
-            data_path = os.path.join(base_path, couple[0] + couple[1])
+            data_path = os.path.join(base_path, "".join(couple))
             sub_name = "_sub_"
             xs, ys = Utils.load_sub_by_sub(subjects, data_path, sub_name)
             xs, ys = np.concatenate(xs), np.concatenate(ys)
