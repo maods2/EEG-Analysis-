@@ -49,7 +49,8 @@ def pca_transform(input_narray, params={}):
 
 def wavelet_transform(input_narray, params={}):
   fs = params['fs'] if 'fs' in params else 250
-  dec_wave_lvs = pywt.wavedec(input_narray, 'coif1', level=2) 
+  axis = params['axis'] if 'axis' in params else -1
+  dec_wave_lvs = pywt.wavedec(input_narray, 'coif1', level=2, axis=axis) 
   return dec_wave_lvs[0]
 
 def time_domain_features_transform(input_narray, params={}):

@@ -220,7 +220,8 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
 metrics_results = []
 
 exclude = [38, 88, 89, 92, 100, 104]
-subject_list = [n for n in np.arange(10, 20) if n not in exclude]
+# subject_list = [n for n in np.arange(10, 20) if n not in exclude]
+subject_list = ['All']
 
 for subjec in subject_list:
 
@@ -229,7 +230,7 @@ for subjec in subject_list:
      chans=2, 
      samples=640, 
      dataset="Motor Imaginary", 
-     subject=str(subjec),
+     subject=subjec,
      metrics_results=metrics_results, 
      kernels=1, 
      epochs=50

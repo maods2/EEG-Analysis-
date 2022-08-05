@@ -58,8 +58,9 @@ def run_pipeline(metrics_results, subject):
 
     # Load data
     # ["FC1", "FC2"], ["FC3", "FC4"], ["FC5", "FC6"]]
-    channels = Utils.combinations["f"]
+    # channels = Utils.combinations["f"]
     # channels = [["FC1", "FC2"]]
+    channels = [["C3", "C4"]]
 
     if subject == "All": 
      exclude = [38, 88, 89, 92, 100, 104]
@@ -107,7 +108,8 @@ def run_pipeline(metrics_results, subject):
         fs=160,
         dataset='Motor Imaginary',
         subject=subject,
-        pipeline='time domain features -> wavelet'
+        pipeline='time domain features -> wavelet',
+        axis=-2
     )
     features_a_train = wavelet_transform(x_train, params)
     features_a_test = wavelet_transform(x_test, params)
@@ -156,10 +158,12 @@ def run_pipeline(metrics_results, subject):
 metrics_results = []
 exclude = [38, 88, 89, 92, 100, 104]
 subject_list = [n for n in np.arange(10, 20) if n not in exclude]
+subject_list = ['All']
+
 for subjec in subject_list:
     run_pipeline(
         metrics_results= metrics_results,
-        subject=str(subjec),
+        subject=subjec,
     )
 
 result = pd.DataFrame(metrics_results)

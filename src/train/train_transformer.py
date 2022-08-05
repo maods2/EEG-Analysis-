@@ -25,9 +25,8 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
     SOURCE_PATH = "C:/Users/Maods/Documents/Code-Samples/Python/MI-EEG-Dataset/dataset/processed"
 
     # Load data
-    # ["FC1", "FC2"], ["FC3", "FC4"], ["FC5", "FC6"]]
-    channels = Utils.combinations["f"]
-    # channels = [["FC1", "FC2"]]
+    # channels = Utils.combinations["f"]
+    channels = [["C3", "C4"]]
 
     if subject == "All": 
      exclude = [38, 88, 89, 92, 100, 104]
@@ -174,14 +173,15 @@ if __name__ == '__main__':
     metrics_results = []
 
     exclude = [38, 88, 89, 92, 100, 104]
-    subject_list = [n for n in np.arange(10, 20) if n not in exclude]
+    # subject_list = [n for n in np.arange(10, 20) if n not in exclude]
+    subject_list = ['All']
     for subjec in subject_list:
         run_pipeline(
             nb_classes=5, 
             chans=2, 
             samples=640, 
             dataset="Motor Imaginary", 
-            subject=str(subjec),
+            subject=subjec,
             metrics_results=metrics_results, 
             kernels=1, 
             epochs=100,
