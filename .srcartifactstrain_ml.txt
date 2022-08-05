@@ -1,4 +1,40 @@
 classes count
-before oversampling = 18467
+before oversampling = 178
 classes count
-after oversampling = 74160
+after oversampling = 720
+classes count
+before oversampling = 180
+classes count
+after oversampling = 720
+classes count
+before oversampling = 182
+classes count
+after oversampling = 720
+classes count
+before oversampling = 180
+classes count
+after oversampling = 720
+classes count
+before oversampling = 182
+classes count
+after oversampling = 720
+classes count
+before oversampling = 180
+classes count
+after oversampling = 720
+classes count
+before oversampling = 182
+classes count
+after oversampling = 720
+classes count
+before oversampling = 182
+classes count
+after oversampling = 720
+classes count
+before oversampling = 180
+classes count
+after oversampling = 720
+classes count
+before oversampling = 180
+classes count
+after oversampling = 720
