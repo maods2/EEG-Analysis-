@@ -37,7 +37,7 @@ def run_pipeline(nb_classes, chans, samples, dataset, subject, metrics_results, 
      subjects = [subject]
 
     x, y = Utils.load(channels, subjects, base_path=SOURCE_PATH)
-    # x, y = x[:500] , y[:500] 
+#     x, y = x[:100] , y[:100] 
     #Transform y to one-hot-encoding
     y_one_hot  = Utils.to_one_hot(y, by_sub=False)
     #Reshape for scaling

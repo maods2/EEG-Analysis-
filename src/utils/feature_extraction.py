@@ -144,8 +144,8 @@ def abs_diff_signal(x, axis):
 def rms(x, axis):
   return np.sqrt(np.nanmean(x**2, axis=axis))
 
-def time_spectral_entropy(x, fs,axis):  # Applied for time domain because has an inner fft calculation 
-  return ant.spectral_entropy(x, sf=fs, method='welch', normalize=True, axis=axis)
+def time_spectral_entropy(x, fs,axis, nperseg):  # Applied for time domain because has an inner fft calculation 
+  return ant.spectral_entropy(x, sf=fs, method='welch', normalize=True, axis=axis, nperseg=nperseg)
 
 def frequency_spectral_entropy(psd, axis, normalize=True):
   psd_norm = psd / psd.sum(axis=axis, keepdims=True)
@@ -164,7 +164,7 @@ def time_domain_features(x, fs, ax):
   ptp_result = ptp(x, ax)
   abs_diff_signal_result = abs_diff_signal(x, ax)
   rms_result = rms(x, ax)
-  time_spectral_entropy_result = time_spectral_entropy(x, fs,axis=ax)
+  time_spectral_entropy_result = time_spectral_entropy(x, fs,axis=ax, nperseg=x.shape[ax])
   return np.round(np.hstack([
               mean_result,
               var_result,
