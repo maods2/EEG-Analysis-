@@ -77,22 +77,12 @@ The datasets were found in a GitHub repository that lists different sources of E
 
  [A list of all public EEG-datasets](https://github.com/meagmohit/EEG-Datasets)
 
-Firstly the plan was to choose only two different datasets but after some tests with the feature extraction process alongside the traditional Machine Learning algorithms showed poor performance, even after a huge effort in the data preprocessing. Therefore, in addition, one more dataset was selected aiming for better metrics as a result.
+Firstly, the plan was to choose only two different datasets but after some tests with the feature extraction process along with the traditional Machine Learning algorithms, we noticed poor performance, even after a huge effort in the data preprocessing. Therefore, in order to concentrate effort only in one problem we took the decision of being working only with Motor Movement / Imagery dataset.
 
-The following data sets were selected:
+The following data set was selected:
 
 
 
-    - BCI Competition 2008 – Graz data set I - 
-        64 EEG channels        
-        2 classes (+ idle state), 7 subjects
-        100Hz sampling rate
-
-    - BCI Competition 2008 – Graz data set II A
-        22 EEG channels        
-        4 classes, 9 subjects
-        250Hz sampling rate
-    
     - EEG Motor Movement/Imagery Dataset (Sept. 9, 2009)
         64 EEG channels  
         4 classes, 80 subjects
@@ -107,15 +97,15 @@ The following data sets were selected:
 
 
 **Dataset documentation:**
-- [BCI Competition 2008 – Graz data set I](https://www.bbci.de/competition/iv/desc_1.html)
-- [BCI Competition 2008 – Graz data set II A](https://www.bbci.de/competition/iv/desc_2a.pdf)
+
 - [EEG Motor Movement/Imagery Dataset (Sept. 9, 2009)](https://www.physionet.org/content/eegmmidb/1.0.0/)
 
 
 ## 2. Preprocessing the dataset
-Once we already had the data, the next step would be to understand its structure in order to process it accordingly to their needs. The datasets are available in three different formats. The first one is EDF (The European Data Format), which is a simple and flexible format for the exchange and storage of multichannel biological and physical signals. The second one is GDF (General Data Format), also a scientific and medical data file format. Lastly, we have MAT format, which supports many data types including signed and unsigned, 8-bit, 16-bit, 32-bit, and 64-bit data types, a special data type that represents MATLAB arrays, Unicode-encoded character data, and data stored in compressed format. To work with these data formats, the MNE and Scipy libraries were used. MNE provides a toolkit for loading and processing biological signals, while Scipy provides algorithms for optimization, integration, interpolation, eigenvalue problems, algebraic equations, differential equations, statistics, and many other tasks. In this case, Scipy was used to load MAT files.
+Once we already had the data, the next step would be to understand its structure in order to process it accordingly to their needs. The datasets is available in EDF format (The European Data Format), which is a simple and flexible format for the exchange and storage of multichannel biological and physical signals. In order to work with this data formats, the MNE library was used. MNE provides a toolkit for loading and processing biological signals.
 
-Although we have functions that load the type of data mentioned above, it was still necessary to develop some functions in order to reshape and aggregate the signal in the following format.
+Although we have functions that load the type of data mentioned above, it was still necessary to develop some functions in order to reshape and aggregate the signal in the following format. During the project we found out a github repository that implemented various functions that are used to load that specifc dataset. Taking this into account, we used those functions in our project ([MI-EEG-1D-CNN](https://github.com/Kubasinska/MI-EEG-1D-CNN)).
+After preprocessing, the data was provided in the following format for the models:
 
      (trails, channels, samples)
 
@@ -142,25 +132,39 @@ At the beginning of this project, we created some sort of plots ( time-series, F
 - Cluster analysis + Multivariate Analysis (PCA) -> Plot clusters 
 
 ## 4. Train Machine Learning Algorithms to have a benchmark.
-As long as we test state-of-the-art algorithms we need to have some sort of metrics baseline considering the traditional literature models. In order to accomplish that, before start playing with Deep Learning, we will explore some Traditional Machine Learning algorithms. The idea here is to implement lots of feature extraction methods and try out various combinations of pipelines to understand the better approach for the given datasets. Each dataset will be trained using two strategies, firstly trying only one individual per training session, and secondly passing data from all individuals at once.
-In addition, we will choose the more performative pipeline to define as our benchmark.
+As long as we test state-of-the-art algorithms we need to have some sort of metrics baseline considering the traditional literature models. In order to accomplish that, before start playing with Deep Learning, we will explored some Traditional Machine Learning algorithms. The idea here is to implement lots of feature extraction methods and try out various combinations of pipelines to understand the better approach for the given datasets. Each dataset will be trained using two strategies, firstly trying only one individual per training session, and secondly passing data from all individuals at once.
+In addition, we will choose the more performative pipeline to define as our benchmark. After testing more than 20 different pipelines, we selected the following to proceed with the experiments:
 
+    > Traditional Machine Learning Pipelines
+        - PCA + KNN
+        - PCA + XGBoost
+        - PCA + SVM
+        - Wavelet Decomposition + Time Features + KNN
+        - Wavelet Decomposition + Time Features + XGBoost
+        - Wavelet Decomposition + Time Features + SVM
+
+![Inter-subject ML results](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/barplot_ml.png "Title")
 
 ## 5. Train Convolutional Neural Networks to have a benchmark.
-Similar to the previous section, now we will implement three different Convolution Neural Networks and test the data, using the same strategy of training only with one individual data, then training with the whole dataset. The CNNs were selected on the following GitHub repository.
+Similar to the previous section, now we will implement three different Convolution Neural Networks and test the data, using the same strategy of training only with one individual data, then training with the whole dataset. The CNNs were selected on the following GitHub repositories.
 
-[Army Research Laboratory (ARL) EEGModels project: A Collection of Convolutional Neural Network (CNN) models for EEG signal processing and classification](https://github.com/vlawhern/arl-eegmodels)
+[Army Research Laboratory (ARL) EEGModels project: A Collection of Convolutional Neural Network (CNN) models for EEG signal processing and classification](https://github.com/vlawhern/arl-eegmodels) / [MI-EEG-1D-CNN](https://github.com/Kubasinska/MI-EEG-1D-CNN)
 
     > CNNs
         - EEGNet
         - DeepConvNet
         - ShallowConvNet
+        - HopefullNet
 
 Moreover, we will summarize and aggregate the results for further analysis and comparison.
 
 ## 6. Traine Transformer-based models
+In this section of the study, we implemented two types of Transformers archtectures for the EEG classification. That being said, for this specific application we are only using the Transformer Encoder coupled with a fully connected layer and sofmax function. One of the architectures was implemented without positional encoder and the second one with it 
 
-It is still under development...
+    > Transformers based models
+        - Transformer
+        - Transformer + Positional Encoder
+    
 
 <br><br>
 ## Code Usage - Creating Virtualenv
