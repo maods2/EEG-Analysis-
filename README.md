@@ -5,38 +5,52 @@ The study consists of classifying EEG signals Motor Imaginary, intending to expl
 A brief overview of the file structure for the repository:
 
 ```bash
-|   .gitignore   
-|   LICENSE
-|   Makefile   # Make file with some scripts for automation
-|   README.md
-|   requirements.txt
-|       
-\---src
-    |   cnn_train.ipynb   # File where we are training CNN models to get the metrics
-    |   exploratory_data_analysis.ipynb # Exploratory Data Analysis for the datasets
-    |   ml_pipeline_search.ipynb # Search the best feature extraction pipeline to train the benchmark 
-    |   ml_train.ipynb # File where we are training ML models to get the metrics
-    |   results # Plot of the results for the different models
-    |   transformer_train.ipynb #  File where we are training transformer based models to get the metrics
-    |   
-    +---artifacts
-    |       ml_models_results.csv # models serch results
-    |       
-    +---models
-    |       cnn_models.py # CNNs Architectures
-    |       transformers.py # Transformers Architectures
-    |       mlmodels.py # ML Gridsearch
-    |       __init__.py
-    |       
-    \---utils
-            dataloader.py # Functions responsible for load the datasets
-            feature_extraction.py # Feature extractions methods
-            mlpipelinebuilder.py # Class used to organize and train different comination de models and pipelines
+
+│   .gitignore   
+│   LICENSE
+│   Makefile   # Make file with some scripts for automation
+│   README.md
+│   requirements.txt
+│
+├───scripts # scripts to automate the models running process 
+│       run_all.sh
+│       run_cnns.sh
+│       run_ml.sh
+│       run_transformers.sh
+│
+└───src
+    │   __init__.py
+    │
+    ├───artifacts # Artifacts genereted after training, such as figures and csvs 
+    │
+    ├───models
+    │       cnn_models.py # CNNs Architectures
+    │       mlmodels.py # ML Pipelines
+    │       transformers.py # Transformers Architectures
+    │       __init__.py
+    │
+    ├───notebooks # Python Notebooks with Exploratory data analysis and plot results from the models
+    │
+    ├───train # Store the train files for each models 
+    │   │   train_cnn.py
+    │   │   train_ml.py
+    │   │   train_transformer.py
+    │   │   __init__.py
+    │   ├───experiment_01 # In each folder is present the training files used for the respectives experiments
+    │   ├───experiment_02
+    │   ├───experiment_03
+    │   ├───experiment_04
+    │   ├───experiment_05
+    │   └───experiment_06
+    │
+    └───utils
+            dataset_generator.py # Functions responsible download and preprocessing the dataset
+            data_preprocessing_utils.py # Functions responsible for load the datasets
+            feature_extraction.py  # Feature extractions methods
             plots.py # We can find here some utilities functions for plotting
             __init__.py
-
-
 ```
+
 
 # EEG-Analysis
 
@@ -55,21 +69,30 @@ However, to dig into the studies of Brain-Computer Interface capabilities, it wa
     - Develop feature extraction methods
     - Find the best feature extraction pipeline for the given datasets
     - Train definitive models
-    - Present results - [Check out the results we have achieved so far.](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/ml_models_results.csv)
-    <br><br>
+    - Present results:
+        >[Inter-subjct | Check out the results we have achieved so far.](hhttps://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/results_ml_models.csv)
+    
+        >[Intra-subjct | Check out the results we have achieved so far.](hhttps://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_06/results_ml_models.csv)
+    
 
 5. Train Convolutional Neural Networks to have a benchmark.
 
     - Implement 1d and 2d CNNs
     - Train definitive models
-    - Present results [Check out the results we have achieved so far.](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/cnn_models_results.csv)
-    <br><br>
+    - Present results: 
+        >[Inter-subjct | Check out the results we have achieved so far.](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/results_cnn_models.csv)
+        
+        >[Intra-subjct | Check out the results we have achieved so far.](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_06/results_cnn_models.csv)
+
 
 6. Traine Transformer-based models.
     - Implement Architecture
     - Test new approaches
-    - Compare results with other models
-    <br><br>
+    - Present results: 
+        >[Inter-subjct | Check out the results we have achieved so far.](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/results_Transformer_models.csv)
+      
+        >[Intra-subjct | Check out the results we have achieved so far.](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_06/results_Transformer_models.csv)
+    
 
 ## 1. Finding datasets
 
