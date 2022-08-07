@@ -161,7 +161,12 @@ Similar to the previous section, now we will implement three different Convoluti
         - ShallowConvNet
         - HopefullNet
 
-Moreover, we will summarize and aggregate the results for further analysis and comparison.
+### CNNs Results | Inter-Subject Approach 
+![Inter-subject CNN results](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/barplot_cnn.png "Title")
+<br></br>
+### CNNs Results | Intra-Subject Approach 
+![Inter-subject CNN results](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_06/barplot_cnn.png "Title")
+
 
 ## 6. Traine Transformer-based models
 In this section of the study, we implemented two types of Transformers archtectures for the EEG classification. That being said, for this specific application we are only using the Transformer Encoder coupled with a fully connected layer and sofmax function. One of the architectures was implemented without positional encoder and the second one with it 
@@ -170,6 +175,22 @@ In this section of the study, we implemented two types of Transformers archtectu
         - Transformer
         - Transformer + Positional Encoder
     
+
+### Transformers Results | Inter-Subject Approach 
+![Inter-subject Transformers results](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/barplot_trans.png "Title")
+<br></br>
+### Transformers Results | Intra-Subject Approach 
+![Inter-subject Transformers results](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_06/barplot_trans.png "Title")
+
+
+## 7. Comparison of all models
+
+### All Models Results | Inter-Subject Approach 
+![Inter-subject All Models results](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/barplot_all.png "Title")
+<br></br>
+### All Models Results | Intra-Subject Approach 
+![Inter-subject All Models results](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_06/barplot_all.png "Title")
+
 
 <br><br>
 ## Code Usage - Creating Virtualenv
