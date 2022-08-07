@@ -70,9 +70,9 @@ However, to dig into the studies of Brain-Computer Interface capabilities, it wa
     - Find the best feature extraction pipeline for the given datasets
     - Train definitive models
     - Present results:
-        >[Inter-subjct | Check out the results we have achieved so far.](hhttps://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/results_ml_models.csv)
+        >[Inter-subjct | Check out the results we have achieved so far.](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/results_ml_models.csv)
     
-        >[Intra-subjct | Check out the results we have achieved so far.](hhttps://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_06/results_ml_models.csv)
+        >[Intra-subjct | Check out the results we have achieved so far.](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_06/results_ml_models.csv)
     
 
 5. Train Convolutional Neural Networks to have a benchmark.
