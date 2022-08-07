@@ -44,11 +44,11 @@ A brief overview of the file structure for the repository:
     │   └───experiment_06
     │
     └───utils
-            dataset_generator.py # Functions responsible download and preprocessing the dataset
-            data_preprocessing_utils.py # Functions responsible for load the datasets
-            feature_extraction.py  # Feature extractions methods
-            plots.py # We can find here some utilities functions for plotting
-            __init__.py
+        │   dataset_generator.py # Functions responsible download and preprocessing the dataset
+        │   data_preprocessing_utils.py # Functions responsible for load the datasets
+        │   feature_extraction.py  # Feature extractions methods
+        │   plots.py # We can find here some utilities functions for plotting
+        │   __init__.py
 ```
 
 
