@@ -143,7 +143,12 @@ In addition, we will choose the more performative pipeline to define as our benc
         - Wavelet Decomposition + Time Features + XGBoost
         - Wavelet Decomposition + Time Features + SVM
 
+
+### ML Results | Inter-Subject Approach 
 ![Inter-subject ML results](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_05/barplot_ml.png "Title")
+<br></br>
+### ML Results | Intra-Subject Approach 
+![Inter-subject ML results](https://github.com/maods2/EEG-Analysis-/blob/main/src/artifacts/experiment_06/barplot_ml.png "Title")
 
 ## 5. Train Convolutional Neural Networks to have a benchmark.
 Similar to the previous section, now we will implement three different Convolution Neural Networks and test the data, using the same strategy of training only with one individual data, then training with the whole dataset. The CNNs were selected on the following GitHub repositories.
