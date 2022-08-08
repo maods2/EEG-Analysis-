@@ -155,7 +155,7 @@ At the beginning of this project, we created some sort of plots ( time-series, F
 - Cluster analysis + Multivariate Analysis (PCA) -> Plot clusters 
 
 ## 4. Train Machine Learning Algorithms to have a benchmark.
-As long as we test state-of-the-art algorithms we need to have some sort of metrics baseline considering the traditional literature models. In order to accomplish that, before start playing with Deep Learning, we will explored some Traditional Machine Learning algorithms. The idea here is to implement lots of feature extraction methods and try out various combinations of pipelines to understand the better approach for the given datasets. Each dataset will be trained using two strategies, firstly trying only one individual per training session, and secondly passing data from all individuals at once.
+As long as we tested state-of-the-art algorithms we needed to have some sort of metrics baseline considering the traditional literature models. In order to accomplish that, before start playing with Deep Learning, we will explored some Traditional Machine Learning algorithms. The idea here is to implement lots of feature extraction methods and try out various combinations of pipelines to understand the better approach for the given datasets. Each dataset will be trained using two strategies, firstly trying only one individual per training session, and secondly passing data from all individuals at once.
 In addition, we will choose the more performative pipeline to define as our benchmark. After testing more than 20 different pipelines, we selected the following to proceed with the experiments:
 
     > Traditional Machine Learning Pipelines
